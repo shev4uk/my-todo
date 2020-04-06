@@ -1,1 +1,24 @@
-<p>registration works!</p>
+<form class="auth-form" [formGroup]="formReg" (ngSubmit)="registration()">
+    <div class="alert alert-danger" role="alert" *ngIf="serverError">
+        {{serverError}}
+    </div>
+    <mat-form-field class="full-width-input">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" formControlName="email">
+        <mat-error *ngIf="formReg.controls.email.hasError('email')">
+            Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="formReg.controls.email.hasError('required')">
+            Email is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width-input">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" placeholder="Password" formControlName="password">
+        <mat-error *ngIf="formReg.controls.password.hasError('required')">
+            Password is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="!formReg.valid">Registration</button>
+</form>
