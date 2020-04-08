@@ -1,4 +1,7 @@
 <form class="auth-form" [formGroup]="formLogin" (ngSubmit)="login()">
+    <div class="alert alert-danger" role="alert" *ngIf="serverError">
+        {{serverError}}
+    </div>
     <mat-form-field class="full-width-input">
         <mat-label>Email</mat-label>
         <input matInput placeholder="Email" formControlName="email">
@@ -17,5 +20,5 @@
             Password is <strong>required</strong>
         </mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" [disabled]="!formLogin.valid">Login</button>
+    <button mat-raised-button color="primary" [disabled]="!formLogin.valid || loginAccess">Login</button>
 </form>

@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from './auth.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
+    private router: Router
   ) { 
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -43,5 +45,14 @@ export class AuthService {
   async register(email: string, password: string) {
     const credential = await this.afAuth.createUserWithEmailAndPassword(email, password);
     return this.updateUserData(credential.user);
+  }
+
+  async login(email: string, password: string) {
+    await this.afAuth.signInWithEmailAndPassword(email, password);
+  }
+
+  async logout() {
+    this.router.navigate(['auth/login']);
+    await this.afAuth.signOut();
   }
 }
