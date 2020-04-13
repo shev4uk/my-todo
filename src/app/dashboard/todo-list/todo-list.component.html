@@ -1,0 +1,4 @@
+<div *ngFor="let todo of todos" class="d-flex justify-content-between">
+    <p (click)="updateStateTodo(todo)">{{todo.name}} {{todo.complete}}</p>
+    <button mat-raised-button color="warn" (click)="removeTodo(todo.id)">Delete</button>
+</div>

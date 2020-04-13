@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   user$: Observable<User>;
+  userDetail;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -21,8 +22,10 @@ export class AuthService {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
+          this.userDetail = user;
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
+          this.userDetail = null;
           return of(null);
         }
       })

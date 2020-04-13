@@ -5,7 +5,7 @@ export interface Todo {
     date: Date;
 }
 
-enum Priority {
+export enum Priority {
     Low = 1,
     Middle = 2,
     High = 3
