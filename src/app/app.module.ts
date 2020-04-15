@@ -8,8 +8,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
-import { MatInputModule } from '@angular/material/input';
-
 @NgModule({
   declarations: [
     AppComponent
@@ -20,7 +18,6 @@ import { MatInputModule } from '@angular/material/input';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

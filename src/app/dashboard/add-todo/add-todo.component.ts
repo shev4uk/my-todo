@@ -1,29 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Priority } from '../todo.model';
 import { TodoService } from '../todo.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-todo',
   templateUrl: './add-todo.component.html',
-  styleUrls: ['./add-todo.component.scss']
+  styleUrls: ['./add-todo.component.scss'],
 })
 export class AddTodoComponent implements OnInit {
 
   serverError: string = '';
-  // priority = Priority;
-  // priority = [
-  //   {
-  //     name: 'Low', value: 1
-  //   },
-  //   {
-  //     name: 'Middle', value: 2
-  //   },
-  //   {
-  //     name: 'High', value: 3
-  //   }
-  // ];
+  priority = [
+    {
+      name: 'Low', value: 1
+    },
+    {
+      name: 'Middle', value: 2
+    },
+    {
+      name: 'High', value: 3
+    }
+  ];
 
   addTodoForm: FormGroup;
 
@@ -44,7 +42,7 @@ export class AddTodoComponent implements OnInit {
     this.todoService.addTodo(this.addTodoForm.value)
       .then((res)=> {
         console.log(res);
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['./dashboard']);
       })
       .catch((er) => {
         console.log(er);

@@ -8,6 +8,8 @@ import { TodoService } from '../todo.service';
 })
 export class TodoListComponent implements OnInit {
 
+  subscription;
+
   todos;
 
   constructor(
@@ -15,7 +17,7 @@ export class TodoListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.todoService.getAllTodos().subscribe(res => {
+    this.subscription = this.todoService.getAllTodos().subscribe(res => {
       this.todos = res;
       console.log(res);
     });
@@ -27,6 +29,10 @@ export class TodoListComponent implements OnInit {
 
   updateStateTodo(todo) {
     this.todoService.updateStateTodo(todo);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

@@ -3,12 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSelectModule} from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../material.module';
 
 
 @NgModule({
@@ -17,9 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     DashboardRoutingModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatInputModule
+    // MaterialModule
   ]
 })
 export class DashboardModule { }
