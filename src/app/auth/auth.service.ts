@@ -58,4 +58,8 @@ export class AuthService {
     this.router.navigate(['auth/login']);
     await this.afAuth.signOut();
   }
+
+  get currentUserId(): string {
+    return this.userDetail == null ? this.userDetail.uid : '';
+  }
 }
